@@ -1,7 +1,7 @@
 import { Head } from "$fresh/runtime.ts";
 import Option6Layout from "../../components/layouts/Option6Layout.tsx";
 import { GridIcon, ListIcon, MonitorIcon, EnvelopeIcon, DollarIcon, TruckIcon, AlertTriangleIcon, GraduationCapIcon, ArrowRightIcon } from "../../components/shared/Icons.tsx";
-import { DashboardCard, PieChart, dashboardData } from "../../components/shared/Dashboard.tsx";
+import { DashboardCard, PieChart, BarChart, DonutChart, dashboardData } from "../../components/shared/Dashboard.tsx";
 
 export default function Option6Home() {
   const menuItems = [
@@ -44,8 +44,8 @@ export default function Option6Home() {
               <DashboardCard title="Aguardando Retorno" value={dashboardData.ocorrenciasAguardandoRetorno} subtitle="Em análise" color="red" />
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <PieChart title="Status dos Exames" data={dashboardData.statusExames} />
-              <PieChart title="Tipos de Exames" data={dashboardData.tiposExames} />
+              <DonutChart title="Status dos Exames" data={dashboardData.statusExames} />
+              <BarChart title="Tipos de Exames" data={dashboardData.tiposExames} />
             </div>
           </div>
 

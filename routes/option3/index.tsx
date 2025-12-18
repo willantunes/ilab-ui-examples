@@ -1,7 +1,7 @@
 import { Head } from "$fresh/runtime.ts";
 import Option3Layout from "../../components/layouts/Option3Layout.tsx";
 import { GridIcon, ListIcon, MonitorIcon, EnvelopeIcon, DollarIcon, TruckIcon, AlertTriangleIcon, GraduationCapIcon, DotIcon, ArrowRightIcon } from "../../components/shared/Icons.tsx";
-import { DashboardCard, PieChart, dashboardData } from "../../components/shared/Dashboard.tsx";
+import { DashboardCard, PieChart, BarChart, DonutChart, dashboardData } from "../../components/shared/Dashboard.tsx";
 
 export default function Option3Home() {
   const menuItems = [
@@ -33,8 +33,11 @@ export default function Option3Home() {
               <DashboardCard title="Aguardando Retorno" value={dashboardData.ocorrenciasAguardandoRetorno} subtitle="Em análise" color="red" />
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <PieChart title="Status dos Exames" data={dashboardData.statusExames} />
-              <PieChart title="Tipos de Exames" data={dashboardData.tiposExames} />
+              <div class="bg-white border-4 border-blue-300 rounded-xl p-6 shadow-xl">
+                <h3 class="text-lg font-bold text-blue-900 mb-4">Status dos Exames</h3>
+                <PieChart title="" data={dashboardData.statusExames} />
+              </div>
+              <BarChart title="Tipos de Exames" data={dashboardData.tiposExames} />
             </div>
           </div>
 

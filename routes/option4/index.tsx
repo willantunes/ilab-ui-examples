@@ -27,39 +27,79 @@ export default function Option4Home() {
             <h2 class="text-xl font-bold text-cyan-400 mb-6">Dashboard</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-6">
               <div class="bg-gray-700/50 border-2 border-cyan-500/30 rounded-xl p-6 hover:border-cyan-500/50 transition-all">
-                <div class="text-sm font-medium text-cyan-300 opacity-80 mb-1">Exames Coletados Hoje</div>
-                <div class="text-3xl font-bold text-cyan-400">{dashboardData.examesColetadosHoje}</div>
-                <div class="text-xs text-gray-400 mt-1">Últimas 24h</div>
+                <div class="text-sm font-bold text-cyan-200 mb-1">Exames Coletados Hoje</div>
+                <div class="text-3xl font-bold text-cyan-300">{dashboardData.examesColetadosHoje}</div>
+                <div class="text-xs text-gray-300 mt-1 font-semibold">Últimas 24h</div>
               </div>
               <div class="bg-gray-700/50 border-2 border-purple-500/30 rounded-xl p-6 hover:border-purple-500/50 transition-all">
-                <div class="text-sm font-medium text-purple-300 opacity-80 mb-1">Exames em Transporte</div>
-                <div class="text-3xl font-bold text-purple-400">{dashboardData.examesEmTransporte}</div>
-                <div class="text-xs text-gray-400 mt-1">Em trânsito</div>
+                <div class="text-sm font-bold text-purple-200 mb-1">Exames em Transporte</div>
+                <div class="text-3xl font-bold text-purple-300">{dashboardData.examesEmTransporte}</div>
+                <div class="text-xs text-gray-300 mt-1 font-semibold">Em trânsito</div>
               </div>
               <div class="bg-gray-700/50 border-2 border-green-500/30 rounded-xl p-6 hover:border-green-500/50 transition-all">
-                <div class="text-sm font-medium text-green-300 opacity-80 mb-1">Exames Liberados</div>
-                <div class="text-3xl font-bold text-green-400">{dashboardData.examesLiberadosMes}</div>
-                <div class="text-xs text-gray-400 mt-1">Este mês</div>
+                <div class="text-sm font-bold text-green-200 mb-1">Exames Liberados</div>
+                <div class="text-3xl font-bold text-green-300">{dashboardData.examesLiberadosMes}</div>
+                <div class="text-xs text-gray-300 mt-1 font-semibold">Este mês</div>
               </div>
               <div class="bg-gray-700/50 border-2 border-orange-500/30 rounded-xl p-6 hover:border-orange-500/50 transition-all">
-                <div class="text-sm font-medium text-orange-300 opacity-80 mb-1">Ocorrências Abertas</div>
-                <div class="text-3xl font-bold text-orange-400">{dashboardData.ocorrenciasAberto}</div>
-                <div class="text-xs text-gray-400 mt-1">Pendentes</div>
+                <div class="text-sm font-bold text-orange-200 mb-1">Ocorrências Abertas</div>
+                <div class="text-3xl font-bold text-orange-300">{dashboardData.ocorrenciasAberto}</div>
+                <div class="text-xs text-gray-300 mt-1 font-semibold">Pendentes</div>
               </div>
               <div class="bg-gray-700/50 border-2 border-red-500/30 rounded-xl p-6 hover:border-red-500/50 transition-all">
-                <div class="text-sm font-medium text-red-300 opacity-80 mb-1">Aguardando Retorno</div>
-                <div class="text-3xl font-bold text-red-400">{dashboardData.ocorrenciasAguardandoRetorno}</div>
-                <div class="text-xs text-gray-400 mt-1">Em análise</div>
+                <div class="text-sm font-bold text-red-200 mb-1">Aguardando Retorno</div>
+                <div class="text-3xl font-bold text-red-300">{dashboardData.ocorrenciasAguardandoRetorno}</div>
+                <div class="text-xs text-gray-300 mt-1 font-semibold">Em análise</div>
               </div>
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <div class="bg-gray-700/50 border-2 border-cyan-500/30 rounded-xl p-6">
-                <h3 class="text-lg font-semibold text-cyan-400 mb-4">Status dos Exames</h3>
-                <PieChart title="" data={dashboardData.statusExames} />
+                <h3 class="text-lg font-bold text-cyan-300 mb-4">Status dos Exames</h3>
+                <div class="flex items-center gap-6">
+                  <div class="flex-shrink-0">
+                    <PieChart title="" data={dashboardData.statusExames} size={140} />
+                  </div>
+                  <div class="flex-1 space-y-2">
+                    {dashboardData.statusExames.map((item, idx) => {
+                      const total = dashboardData.statusExames.reduce((sum, i) => sum + i.value, 0);
+                      const percentage = ((item.value / total) * 100).toFixed(1);
+                      return (
+                        <div key={idx} class="flex items-center justify-between">
+                          <div class="flex items-center gap-2">
+                            <div class="w-3 h-3 rounded-full border border-gray-500" style={`background-color: ${item.color}`}></div>
+                            <span class="text-sm font-semibold text-gray-200">{item.label}</span>
+                          </div>
+                          <div class="text-sm font-bold text-gray-100">
+                            {item.value} ({percentage}%)
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
               </div>
               <div class="bg-gray-700/50 border-2 border-cyan-500/30 rounded-xl p-6">
-                <h3 class="text-lg font-semibold text-cyan-400 mb-4">Tipos de Exames</h3>
-                <PieChart title="" data={dashboardData.tiposExames} />
+                <h3 class="text-lg font-bold text-cyan-300 mb-4">Tipos de Exames</h3>
+                <div class="space-y-3">
+                  {dashboardData.tiposExames.map((item, idx) => {
+                    const max = Math.max(...dashboardData.tiposExames.map(i => i.value));
+                    const percentage = (item.value / max) * 100;
+                    return (
+                      <div key={idx}>
+                        <div class="flex items-center justify-between mb-1">
+                          <span class="text-sm font-semibold text-gray-200">{item.label}</span>
+                          <span class="text-sm font-bold text-gray-100">{item.value}</span>
+                        </div>
+                        <div class="w-full bg-gray-600 rounded-full h-4 overflow-hidden">
+                          <div
+                            class="h-4 rounded-full transition-all"
+                            style={`width: ${percentage}%; background-color: ${item.color}`}
+                          ></div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             </div>
           </div>

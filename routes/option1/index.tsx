@@ -1,7 +1,7 @@
 import { Head } from "$fresh/runtime.ts";
 import Option1Layout from "../../components/layouts/Option1Layout.tsx";
 import { GridIcon, ListIcon, MonitorIcon, EnvelopeIcon, DollarIcon, TruckIcon, AlertTriangleIcon, GraduationCapIcon, ArrowRightIcon } from "../../components/shared/Icons.tsx";
-import { DashboardCard, PieChart, dashboardData } from "../../components/shared/Dashboard.tsx";
+import { DashboardCard, PieChart, BarChart, DonutChart, dashboardData } from "../../components/shared/Dashboard.tsx";
 
 export default function Option1Home() {
   const menuItems = [
@@ -60,8 +60,13 @@ export default function Option1Home() {
               />
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <PieChart title="Status dos Exames" data={dashboardData.statusExames} />
-              <PieChart title="Tipos de Exames" data={dashboardData.tiposExames} />
+              <div class="bg-white/80 backdrop-blur-sm border border-blue-200/50 rounded-xl p-6">
+                <h3 class="text-lg font-bold text-blue-900 mb-4">Status dos Exames</h3>
+                <PieChart title="" data={dashboardData.statusExames} />
+              </div>
+              <div class="bg-white/80 backdrop-blur-sm border border-blue-200/50 rounded-xl p-6">
+                <BarChart title="Tipos de Exames" data={dashboardData.tiposExames} />
+              </div>
             </div>
           </div>
 

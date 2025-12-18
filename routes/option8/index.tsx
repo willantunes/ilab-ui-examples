@@ -1,7 +1,7 @@
 import { Head } from "$fresh/runtime.ts";
 import Option8Layout from "../../components/layouts/Option8Layout.tsx";
 import { GridIcon, ListIcon, MonitorIcon, EnvelopeIcon, DollarIcon, TruckIcon, AlertTriangleIcon, GraduationCapIcon, ArrowRightIcon } from "../../components/shared/Icons.tsx";
-import { DashboardCard, PieChart, dashboardData } from "../../components/shared/Dashboard.tsx";
+import { DashboardCard, PieChart, BarChart, DonutChart, dashboardData } from "../../components/shared/Dashboard.tsx";
 
 export default function Option8Home() {
   const menuItems = [
@@ -34,7 +34,7 @@ export default function Option8Home() {
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <PieChart title="Status dos Exames" data={dashboardData.statusExames} />
-              <PieChart title="Tipos de Exames" data={dashboardData.tiposExames} />
+              <BarChart title="Tipos de Exames" data={dashboardData.tiposExames} />
             </div>
           </div>
 
