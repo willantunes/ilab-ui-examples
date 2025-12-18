@@ -34,9 +34,7 @@ export default function Option8Home() {
                   href={`/option8/${item.id}`}
                   class="bg-slate-50 border border-slate-200 rounded-xl p-6 hover:bg-white hover:border-blue-300 hover:shadow-md transition-all group relative"
                 >
-                  <div class="absolute -top-2 -left-2 w-7 h-7 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs font-bold shadow-md z-10">
-                    {index + 1}
-                  </div>
+                  <div class="absolute top-0 left-0 w-2 h-2 bg-blue-600 rounded-full shadow-sm z-10"></div>
                   <div class="flex items-center gap-4 mb-3">
                     <div class="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 group-hover:bg-blue-200 transition-colors">
                       <Icon />
@@ -50,7 +48,7 @@ export default function Option8Home() {
                     ></div>
                   </div>
                   {!isLast && !isLastInRow && (
-                    <div class="hidden md:block absolute top-1/2 -right-2 text-slate-300 opacity-40">
+                    <div class="hidden md:block absolute top-1/2 -right-2 flex-shrink-0 text-slate-300 opacity-40 group-hover:opacity-100 transition-all">
                       <ArrowRightIcon />
                     </div>
                   )}

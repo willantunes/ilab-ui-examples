@@ -45,15 +45,13 @@ export default function Option5Home() {
                   href={`/option5/${item.id}`}
                   class={`${colorClasses[item.color]} border-l-4 border border-slate-200 rounded-lg p-4 sm:p-6 hover:bg-slate-100 hover:border-slate-300 transition-all flex items-center gap-3 sm:gap-4 group relative`}
                 >
-                  <div class="absolute -top-2 -left-2 w-6 h-6 bg-slate-900 text-white rounded-full flex items-center justify-center text-xs font-bold shadow-md z-10">
-                    {index + 1}
-                  </div>
+                  <div class="absolute top-0 left-0 w-2 h-2 bg-slate-900 rounded-full shadow-sm z-10"></div>
                   <div class="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-lg flex items-center justify-center text-slate-700 group-hover:scale-110 transition-transform shadow-sm">
                     <Icon />
                   </div>
                   <div class="text-slate-900 font-medium text-sm sm:text-base flex-1">{item.label}</div>
                   {!isLast && !isLastInRow && (
-                    <div class="hidden lg:block absolute top-1/2 -right-2 text-slate-300 opacity-50">
+                    <div class="hidden lg:block flex-shrink-0 text-slate-300 opacity-50 group-hover:opacity-100 transition-all">
                       <ArrowRightIcon />
                     </div>
                   )}

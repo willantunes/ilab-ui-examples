@@ -32,15 +32,13 @@ export default function Option12Home() {
                   href={`/option12/${item.id}`}
                   class="bg-[#0d0d0d] border border-[#2a2a2a] rounded-lg p-6 hover:bg-[#1a1a1a] hover:border-[#4ec9b0]/50 transition-all group relative"
                 >
-                  <div class="absolute -top-2 -left-2 w-7 h-7 bg-[#4ec9b0] text-[#0d0d0d] rounded-full flex items-center justify-center text-xs font-bold shadow-lg shadow-[#4ec9b0]/30 z-10">
-                    {index + 1}
-                  </div>
+                  <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-[#4ec9b0] rounded-full shadow-lg shadow-[#4ec9b0]/30 z-10 ring-2 ring-[#4ec9b0]/20"></div>
                   <div class="w-12 h-12 bg-[#1a1a1a] border border-[#2a2a2a] rounded-lg flex items-center justify-center text-[#4ec9b0] mb-4 group-hover:border-[#4ec9b0] group-hover:scale-110 transition-all">
                     <Icon />
                   </div>
                   <div class="text-gray-300 font-medium">{item.label}</div>
                   {!isLast && !isLastInRow && (
-                    <div class="hidden lg:block absolute top-1/2 -right-2 text-[#2a2a2a] opacity-40">
+                    <div class="hidden lg:block absolute top-1/2 -right-2 flex-shrink-0 text-[#2a2a2a] opacity-40 group-hover:opacity-100 transition-all">
                       <ArrowRightIcon />
                     </div>
                   )}

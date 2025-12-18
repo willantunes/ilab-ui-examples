@@ -32,15 +32,13 @@ export default function Option11Home() {
                   href={`/option11/${item.id}`}
                   class={`${item.color} border-2 rounded-xl p-4 sm:p-6 hover:shadow-lg transition-all cursor-pointer group relative`}
                 >
-                  <div class="absolute -top-2 -left-2 w-6 h-6 bg-gray-900 text-white rounded-full flex items-center justify-center text-xs font-bold shadow-lg z-10">
-                    {index + 1}
-                  </div>
+                  <div class="absolute top-0 left-0 w-2 h-2 bg-gray-900 rounded-full shadow-sm z-10"></div>
                   <div class={`flex-shrink-0 w-12 h-12 ${item.color.split(' ')[0]} rounded-lg flex items-center justify-center mb-3 group-hover:scale-110 transition-transform`}>
                     <Icon />
                   </div>
                   <div class="text-gray-900 font-semibold text-sm sm:text-base">{item.label}</div>
                   {!isLast && !isLastInRow && (
-                    <div class="hidden lg:block absolute top-1/2 -right-2 text-gray-300 opacity-30">
+                    <div class="hidden lg:block absolute top-1/2 -right-2 flex-shrink-0 text-gray-300 opacity-30 group-hover:opacity-100 transition-all">
                       <ArrowRightIcon />
                     </div>
                   )}

@@ -32,9 +32,7 @@ export default function Option10Home() {
                   href={`/option10/${item.id}`}
                   class="bg-gray-50 border border-gray-200 rounded-lg p-6 hover:bg-gray-100 hover:border-blue-300 transition-all group relative overflow-hidden"
                 >
-                  <div class="absolute -top-2 -left-2 w-7 h-7 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs font-bold shadow-md z-10">
-                    {index + 1}
-                  </div>
+                  <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-blue-600 rounded-full shadow-md z-10 border-2 border-white"></div>
                   <div class="absolute inset-0 bg-gradient-to-r from-blue-500/0 via-blue-500/0 to-blue-500/0 group-hover:from-blue-500/5 group-hover:via-blue-500/10 group-hover:to-blue-500/5 transition-all"></div>
                   <div class="relative flex items-center gap-4">
                     <div class="flex-shrink-0 w-12 h-12 bg-white rounded-lg flex items-center justify-center text-gray-600 group-hover:text-blue-600 group-hover:scale-110 group-hover:rotate-3 transition-all shadow-sm">
@@ -43,7 +41,7 @@ export default function Option10Home() {
                     <div class="text-gray-900 font-medium flex-1">{item.label}</div>
                   </div>
                   {!isLast && !isLastInRow && (
-                    <div class="hidden md:block absolute top-1/2 -right-2 text-gray-300 opacity-40">
+                    <div class="hidden md:block absolute top-1/2 -right-2 flex-shrink-0 text-gray-300 opacity-40 group-hover:opacity-100 transition-all">
                       <ArrowRightIcon />
                     </div>
                   )}

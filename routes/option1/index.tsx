@@ -32,11 +32,9 @@ export default function Option1Home() {
               return (
                 <a
                   href={`/option1/${item.id}`}
-                  class="bg-white/80 backdrop-blur-sm border border-blue-200/50 rounded-xl p-4 sm:p-6 hover:shadow-lg transition-all hover:scale-105 flex items-center gap-3 sm:gap-4 group relative z-10"
+                  class="bg-white/80 backdrop-blur-sm border border-blue-200/50 rounded-xl p-4 sm:p-6 hover:shadow-lg transition-all hover:scale-105 flex items-center gap-3 sm:gap-4 group relative"
                 >
-                  <div class="absolute -top-2 -left-2 w-7 h-7 sm:w-8 sm:h-8 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center text-white text-xs sm:text-sm font-bold shadow-md z-10">
-                    {index + 1}
-                  </div>
+                  <div class="absolute -top-1 left-1/2 transform -translate-x-1/2 w-3 h-3 bg-blue-500 rounded-full shadow-md z-10 border-2 border-white"></div>
                   <div class="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 group-hover:bg-blue-200 transition-colors">
                     <Icon />
                   </div>
@@ -44,7 +42,7 @@ export default function Option1Home() {
                     <div class="text-blue-900 font-semibold text-sm sm:text-base">{item.label}</div>
                   </div>
                   {!isLast && !isLastInRow && (
-                    <div class="hidden lg:block absolute top-1/2 -right-3 sm:-right-4 md:-right-6 z-0 text-blue-300 opacity-50">
+                    <div class="hidden lg:block flex-shrink-0 text-blue-300 opacity-50 group-hover:opacity-100 group-hover:text-blue-500 transition-all">
                       <ArrowRightIcon />
                     </div>
                   )}

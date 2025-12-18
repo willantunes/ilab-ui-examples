@@ -34,15 +34,13 @@ export default function Option4Home() {
                   href={`/option4/${item.id}`}
                   class="bg-gray-800 border-2 border-cyan-500/30 rounded-xl p-6 hover:shadow-xl hover:shadow-cyan-500/20 transition-all hover:scale-105 hover:border-cyan-500 flex items-center gap-4 shadow-lg group relative"
                 >
-                  <div class="absolute -top-3 -left-3 w-8 h-8 bg-cyan-500 text-gray-900 rounded-full flex items-center justify-center text-sm font-bold shadow-lg shadow-cyan-500/50 z-10">
-                    {index + 1}
-                  </div>
+                  <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-cyan-500 rounded-full shadow-lg shadow-cyan-500/50 z-10 ring-2 ring-cyan-500/30"></div>
                   <div class="flex-shrink-0 w-14 h-14 bg-cyan-500/20 rounded-xl flex items-center justify-center text-cyan-400 shadow-lg shadow-cyan-500/30 group-hover:shadow-cyan-500/50 group-hover:bg-cyan-500/30 transition-all">
                     <Icon />
                   </div>
                   <div class="text-gray-100 font-semibold flex-1">{item.label}</div>
                   {!isLast && !isLastInRow && (
-                    <div class="hidden md:block absolute top-1/2 -right-3 text-cyan-500/40">
+                    <div class="hidden md:block flex-shrink-0 text-cyan-500/50 opacity-60 group-hover:opacity-100 transition-all">
                       <ArrowRightIcon />
                     </div>
                   )}

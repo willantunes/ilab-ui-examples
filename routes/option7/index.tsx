@@ -34,9 +34,7 @@ export default function Option7Home() {
                   href={`/option7/${item.id}`}
                   class="bg-gray-50 border border-gray-200 rounded-xl p-8 hover:bg-white hover:shadow-md transition-all flex items-center gap-5 group relative"
                 >
-                  <div class="absolute -top-3 -left-3 w-8 h-8 bg-gray-900 text-white rounded-full flex items-center justify-center text-sm font-bold shadow-lg z-10">
-                    {index + 1}
-                  </div>
+                  <div class="absolute top-0 left-0 w-3 h-3 bg-gray-900 rounded-full shadow-md z-10"></div>
                   <div class="flex-shrink-0 relative">
                     <div class="w-14 h-14 bg-gray-200 rounded-xl flex items-center justify-center text-gray-600 group-hover:bg-blue-100 group-hover:text-blue-600 transition-colors">
                       <Icon />
@@ -47,7 +45,7 @@ export default function Option7Home() {
                   </div>
                   <div class="text-gray-900 font-semibold text-base flex-1">{item.label}</div>
                   {!isLast && !isLastInRow && (
-                    <div class="hidden md:block absolute top-1/2 -right-3 text-gray-300 opacity-40">
+                    <div class="hidden md:block flex-shrink-0 text-gray-300 opacity-40 group-hover:opacity-100 transition-all">
                       <ArrowRightIcon />
                     </div>
                   )}

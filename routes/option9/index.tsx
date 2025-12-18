@@ -32,15 +32,13 @@ export default function Option9Home() {
                   href={`/option9/${item.id}`}
                   class="bg-[#252526] border border-[#3e3e42] rounded p-4 hover:bg-[#2a2d2e] transition-colors text-[#cccccc] group relative"
                 >
-                  <div class="absolute -top-2 -left-2 w-6 h-6 bg-[#4ec9b0] text-[#1e1e1e] rounded-full flex items-center justify-center text-xs font-bold z-10">
-                    {index + 1}
-                  </div>
+                  <div class="absolute top-0 left-0 w-2 h-2 bg-[#4ec9b0] rounded-full shadow-sm z-10"></div>
                   <div class="w-10 h-10 text-[#4ec9b0] mb-3 group-hover:scale-110 transition-transform">
                     <Icon />
                   </div>
                   <div class="text-sm">{item.label}</div>
                   {!isLast && !isLastInRow && (
-                    <div class="hidden lg:block absolute top-1/2 -right-2 text-[#3e3e42] opacity-50">
+                    <div class="hidden lg:block absolute top-1/2 -right-2 flex-shrink-0 text-[#3e3e42] opacity-50 group-hover:opacity-100 transition-all">
                       <ArrowRightIcon />
                     </div>
                   )}

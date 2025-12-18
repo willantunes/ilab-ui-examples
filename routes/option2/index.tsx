@@ -30,25 +30,21 @@ export default function Option2Home() {
               const isLast = index === menuItems.length - 1;
               const isLastInRow = (index + 1) % 3 === 0;
               return (
-                <>
-                  <a
-                    href={`/option2/${item.id}`}
-                    class="bg-white border-2 border-blue-200 rounded-xl p-6 hover:shadow-xl transition-all hover:scale-105 hover:border-blue-500 flex items-center gap-4 shadow-md group relative"
-                  >
-                    <div class="absolute -top-3 -left-3 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold shadow-lg z-10">
-                      {index + 1}
+                <a
+                  href={`/option2/${item.id}`}
+                  class="bg-white border-2 border-blue-200 rounded-xl p-6 hover:shadow-xl transition-all hover:scale-105 hover:border-blue-500 flex items-center gap-4 shadow-md group relative"
+                >
+                  <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-blue-600 rounded-full shadow-lg z-10 border-2 border-white"></div>
+                  <div class={`flex-shrink-0 w-14 h-14 bg-gradient-to-br ${item.gradient} rounded-full flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform`}>
+                    <Icon />
+                  </div>
+                  <div class="text-blue-900 font-semibold flex-1">{item.label}</div>
+                  {!isLast && !isLastInRow && (
+                    <div class="hidden md:block flex-shrink-0 text-blue-400 opacity-60 group-hover:opacity-100 transition-all">
+                      <ArrowRightIcon />
                     </div>
-                    <div class={`flex-shrink-0 w-14 h-14 bg-gradient-to-br ${item.gradient} rounded-full flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform`}>
-                      <Icon />
-                    </div>
-                    <div class="text-blue-900 font-semibold flex-1">{item.label}</div>
-                    {!isLast && !isLastInRow && (
-                      <div class="hidden md:block absolute top-1/2 -right-3 text-blue-300 opacity-50">
-                        <ArrowRightIcon />
-                      </div>
-                    )}
-                  </a>
-                </>
+                  )}
+                </a>
               );
             })}
           </div>
