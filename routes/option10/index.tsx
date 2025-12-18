@@ -1,6 +1,6 @@
 import { Head } from "$fresh/runtime.ts";
 import Option10Layout from "../../components/layouts/Option10Layout.tsx";
-import { GridIcon, ListIcon, MonitorIcon, EnvelopeIcon, DollarIcon, TruckIcon, AlertTriangleIcon, GraduationCapIcon } from "../../components/shared/Icons.tsx";
+import { GridIcon, ListIcon, MonitorIcon, EnvelopeIcon, DollarIcon, TruckIcon, AlertTriangleIcon, GraduationCapIcon, ArrowRightIcon } from "../../components/shared/Icons.tsx";
 
 export default function Option10Home() {
   const menuItems = [
@@ -22,14 +22,19 @@ export default function Option10Home() {
       <Option10Layout currentPage="fluxo-geral">
         <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
           <h1 class="text-2xl font-bold text-gray-900 mb-6">Fluxo Geral</h1>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {menuItems.map((item) => {
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 relative">
+            {menuItems.map((item, index) => {
               const Icon = item.icon;
+              const isLast = index === menuItems.length - 1;
+              const isLastInRow = (index + 1) % 3 === 0;
               return (
                 <a
                   href={`/option10/${item.id}`}
                   class="bg-gray-50 border border-gray-200 rounded-lg p-6 hover:bg-gray-100 hover:border-blue-300 transition-all group relative overflow-hidden"
                 >
+                  <div class="absolute -top-2 -left-2 w-7 h-7 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs font-bold shadow-md z-10">
+                    {index + 1}
+                  </div>
                   <div class="absolute inset-0 bg-gradient-to-r from-blue-500/0 via-blue-500/0 to-blue-500/0 group-hover:from-blue-500/5 group-hover:via-blue-500/10 group-hover:to-blue-500/5 transition-all"></div>
                   <div class="relative flex items-center gap-4">
                     <div class="flex-shrink-0 w-12 h-12 bg-white rounded-lg flex items-center justify-center text-gray-600 group-hover:text-blue-600 group-hover:scale-110 group-hover:rotate-3 transition-all shadow-sm">
@@ -37,6 +42,11 @@ export default function Option10Home() {
                     </div>
                     <div class="text-gray-900 font-medium flex-1">{item.label}</div>
                   </div>
+                  {!isLast && !isLastInRow && (
+                    <div class="hidden md:block absolute top-1/2 -right-2 text-gray-300 opacity-40">
+                      <ArrowRightIcon />
+                    </div>
+                  )}
                 </a>
               );
             })}

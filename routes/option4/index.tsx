@@ -1,6 +1,6 @@
 import { Head } from "$fresh/runtime.ts";
 import Option4Layout from "../../components/layouts/Option4Layout.tsx";
-import { GridIcon, ListIcon, MonitorIcon, EnvelopeIcon, DollarIcon, TruckIcon, AlertTriangleIcon, GraduationCapIcon } from "../../components/shared/Icons.tsx";
+import { GridIcon, ListIcon, MonitorIcon, EnvelopeIcon, DollarIcon, TruckIcon, AlertTriangleIcon, GraduationCapIcon, ArrowRightIcon } from "../../components/shared/Icons.tsx";
 
 export default function Option4Home() {
   const menuItems = [
@@ -24,18 +24,28 @@ export default function Option4Home() {
           <div class="bg-gray-700 border-b-2 border-cyan-500 text-cyan-400 px-6 py-4 rounded-t-xl -m-8 mb-4">
             <h1 class="text-2xl font-bold">Fluxo Geral</h1>
           </div>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-            {menuItems.map((item) => {
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 relative">
+            {menuItems.map((item, index) => {
               const Icon = item.icon;
+              const isLast = index === menuItems.length - 1;
+              const isLastInRow = (index + 1) % 3 === 0;
               return (
                 <a
                   href={`/option4/${item.id}`}
-                  class="bg-gray-800 border-2 border-cyan-500/30 rounded-xl p-6 hover:shadow-xl hover:shadow-cyan-500/20 transition-all hover:scale-105 hover:border-cyan-500 flex items-center gap-4 shadow-lg group"
+                  class="bg-gray-800 border-2 border-cyan-500/30 rounded-xl p-6 hover:shadow-xl hover:shadow-cyan-500/20 transition-all hover:scale-105 hover:border-cyan-500 flex items-center gap-4 shadow-lg group relative"
                 >
+                  <div class="absolute -top-3 -left-3 w-8 h-8 bg-cyan-500 text-gray-900 rounded-full flex items-center justify-center text-sm font-bold shadow-lg shadow-cyan-500/50 z-10">
+                    {index + 1}
+                  </div>
                   <div class="flex-shrink-0 w-14 h-14 bg-cyan-500/20 rounded-xl flex items-center justify-center text-cyan-400 shadow-lg shadow-cyan-500/30 group-hover:shadow-cyan-500/50 group-hover:bg-cyan-500/30 transition-all">
                     <Icon />
                   </div>
                   <div class="text-gray-100 font-semibold flex-1">{item.label}</div>
+                  {!isLast && !isLastInRow && (
+                    <div class="hidden md:block absolute top-1/2 -right-3 text-cyan-500/40">
+                      <ArrowRightIcon />
+                    </div>
+                  )}
                 </a>
               );
             })}

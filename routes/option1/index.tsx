@@ -24,23 +24,30 @@ export default function Option1Home() {
           <div class="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-6 py-4 rounded-t-2xl -m-8 mb-4">
             <h1 class="text-2xl font-bold">Fluxo Geral</h1>
           </div>
-          <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 mt-4 sm:mt-6 md:mt-8">
-            {menuItems.map((item) => {
+          <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 mt-4 sm:mt-6 md:mt-8 relative">
+            {menuItems.map((item, index) => {
               const Icon = item.icon;
+              const isLast = index === menuItems.length - 1;
+              const isLastInRow = (index + 1) % 4 === 0;
               return (
                 <a
                   href={`/option1/${item.id}`}
-                  class="bg-white/80 backdrop-blur-sm border border-blue-200/50 rounded-xl p-4 sm:p-6 hover:shadow-lg transition-all hover:scale-105 flex items-center gap-3 sm:gap-4 group"
+                  class="bg-white/80 backdrop-blur-sm border border-blue-200/50 rounded-xl p-4 sm:p-6 hover:shadow-lg transition-all hover:scale-105 flex items-center gap-3 sm:gap-4 group relative z-10"
                 >
+                  <div class="absolute -top-2 -left-2 w-7 h-7 sm:w-8 sm:h-8 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center text-white text-xs sm:text-sm font-bold shadow-md z-10">
+                    {index + 1}
+                  </div>
                   <div class="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 group-hover:bg-blue-200 transition-colors">
                     <Icon />
                   </div>
                   <div class="flex-1 min-w-0">
                     <div class="text-blue-900 font-semibold text-sm sm:text-base">{item.label}</div>
                   </div>
-                  <div class="flex-shrink-0 text-blue-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all">
-                    <ArrowRightIcon />
-                  </div>
+                  {!isLast && !isLastInRow && (
+                    <div class="hidden lg:block absolute top-1/2 -right-3 sm:-right-4 md:-right-6 z-0 text-blue-300 opacity-50">
+                      <ArrowRightIcon />
+                    </div>
+                  )}
                 </a>
               );
             })}

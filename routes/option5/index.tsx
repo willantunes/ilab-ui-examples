@@ -1,6 +1,6 @@
 import { Head } from "$fresh/runtime.ts";
 import Option5Layout from "../../components/layouts/Option5Layout.tsx";
-import { GridIcon, ListIcon, MonitorIcon, EnvelopeIcon, DollarIcon, TruckIcon, AlertTriangleIcon, GraduationCapIcon } from "../../components/shared/Icons.tsx";
+import { GridIcon, ListIcon, MonitorIcon, EnvelopeIcon, DollarIcon, TruckIcon, AlertTriangleIcon, GraduationCapIcon, ArrowRightIcon } from "../../components/shared/Icons.tsx";
 
 export default function Option5Home() {
   const menuItems = [
@@ -35,18 +35,28 @@ export default function Option5Home() {
           <div class="bg-slate-900 text-white px-6 py-4 rounded-t-xl -m-8 mb-4">
             <h1 class="text-2xl font-bold">Fluxo Geral</h1>
           </div>
-          <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 mt-4 sm:mt-6 md:mt-8">
-            {menuItems.map((item) => {
+          <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 mt-4 sm:mt-6 md:mt-8 relative">
+            {menuItems.map((item, index) => {
               const Icon = item.icon;
+              const isLast = index === menuItems.length - 1;
+              const isLastInRow = (index + 1) % 4 === 0;
               return (
                 <a
                   href={`/option5/${item.id}`}
-                  class={`${colorClasses[item.color]} border-l-4 border border-slate-200 rounded-lg p-4 sm:p-6 hover:bg-slate-100 hover:border-slate-300 transition-all flex items-center gap-3 sm:gap-4 group`}
+                  class={`${colorClasses[item.color]} border-l-4 border border-slate-200 rounded-lg p-4 sm:p-6 hover:bg-slate-100 hover:border-slate-300 transition-all flex items-center gap-3 sm:gap-4 group relative`}
                 >
+                  <div class="absolute -top-2 -left-2 w-6 h-6 bg-slate-900 text-white rounded-full flex items-center justify-center text-xs font-bold shadow-md z-10">
+                    {index + 1}
+                  </div>
                   <div class="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-lg flex items-center justify-center text-slate-700 group-hover:scale-110 transition-transform shadow-sm">
                     <Icon />
                   </div>
                   <div class="text-slate-900 font-medium text-sm sm:text-base flex-1">{item.label}</div>
+                  {!isLast && !isLastInRow && (
+                    <div class="hidden lg:block absolute top-1/2 -right-2 text-slate-300 opacity-50">
+                      <ArrowRightIcon />
+                    </div>
+                  )}
                 </a>
               );
             })}

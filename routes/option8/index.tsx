@@ -1,6 +1,6 @@
 import { Head } from "$fresh/runtime.ts";
 import Option8Layout from "../../components/layouts/Option8Layout.tsx";
-import { GridIcon, ListIcon, MonitorIcon, EnvelopeIcon, DollarIcon, TruckIcon, AlertTriangleIcon, GraduationCapIcon } from "../../components/shared/Icons.tsx";
+import { GridIcon, ListIcon, MonitorIcon, EnvelopeIcon, DollarIcon, TruckIcon, AlertTriangleIcon, GraduationCapIcon, ArrowRightIcon } from "../../components/shared/Icons.tsx";
 
 export default function Option8Home() {
   const menuItems = [
@@ -24,14 +24,19 @@ export default function Option8Home() {
           <div class="bg-blue-600 text-white px-8 py-5 rounded-t-2xl -m-10 mb-6">
             <h1 class="text-2xl font-bold">Fluxo Geral</h1>
           </div>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-6">
-            {menuItems.map((item) => {
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-6 relative">
+            {menuItems.map((item, index) => {
               const Icon = item.icon;
+              const isLast = index === menuItems.length - 1;
+              const isLastInRow = (index + 1) % 3 === 0;
               return (
                 <a
                   href={`/option8/${item.id}`}
-                  class="bg-slate-50 border border-slate-200 rounded-xl p-6 hover:bg-white hover:border-blue-300 hover:shadow-md transition-all group"
+                  class="bg-slate-50 border border-slate-200 rounded-xl p-6 hover:bg-white hover:border-blue-300 hover:shadow-md transition-all group relative"
                 >
+                  <div class="absolute -top-2 -left-2 w-7 h-7 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs font-bold shadow-md z-10">
+                    {index + 1}
+                  </div>
                   <div class="flex items-center gap-4 mb-3">
                     <div class="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 group-hover:bg-blue-200 transition-colors">
                       <Icon />
@@ -44,6 +49,11 @@ export default function Option8Home() {
                       style={`width: ${item.progress}%`}
                     ></div>
                   </div>
+                  {!isLast && !isLastInRow && (
+                    <div class="hidden md:block absolute top-1/2 -right-2 text-slate-300 opacity-40">
+                      <ArrowRightIcon />
+                    </div>
+                  )}
                 </a>
               );
             })}
