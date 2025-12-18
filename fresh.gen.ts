@@ -3,6 +3,7 @@
 // This file is automatically updated during development when running `dev.ts`.
 
 import * as $_app from "./routes/_app.tsx";
+import * as $api_name_ from "./routes/api/[name].tsx";
 import * as $index from "./routes/index.tsx";
 import * as $option1_cadastro from "./routes/option1/cadastro.tsx";
 import * as $option1_estoque from "./routes/option1/estoque.tsx";
@@ -56,12 +57,13 @@ import * as $option8_protocolo from "./routes/option8/protocolo.tsx";
 import * as $option9_cadastro from "./routes/option9/cadastro.tsx";
 import * as $option9_estoque from "./routes/option9/estoque.tsx";
 import * as $option9_index from "./routes/option9/index.tsx";
-
+import * as $Counter from "./islands/Counter.tsx";
 import { type Manifest } from "$fresh/server.ts";
 
 const manifest = {
   routes: {
     "./routes/_app.tsx": $_app,
+    "./routes/api/[name].tsx": $api_name_,
     "./routes/index.tsx": $index,
     "./routes/option1/cadastro.tsx": $option1_cadastro,
     "./routes/option1/estoque.tsx": $option1_estoque,
@@ -116,7 +118,9 @@ const manifest = {
     "./routes/option9/estoque.tsx": $option9_estoque,
     "./routes/option9/index.tsx": $option9_index,
   },
-  islands: {},
+  islands: {
+    "./islands/Counter.tsx": $Counter,
+  },
   baseUrl: import.meta.url,
 } satisfies Manifest;
 
