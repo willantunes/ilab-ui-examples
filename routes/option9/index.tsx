@@ -1,6 +1,7 @@
 import { Head } from "$fresh/runtime.ts";
 import Option9Layout from "../../components/layouts/Option9Layout.tsx";
 import { GridIcon, ListIcon, MonitorIcon, EnvelopeIcon, DollarIcon, TruckIcon, AlertTriangleIcon, GraduationCapIcon, ArrowRightIcon } from "../../components/shared/Icons.tsx";
+import { PieChart, dashboardData } from "../../components/shared/Dashboard.tsx";
 
 export default function Option9Home() {
   const menuItems = [
@@ -20,9 +21,53 @@ export default function Option9Home() {
         <title>Gralab Diagnósticos - Opção 9</title>
       </Head>
       <Option9Layout currentPage="fluxo-geral">
-        <div class="bg-[#1e1e1e] border border-[#3e3e42] rounded p-6">
-          <h1 class="text-xl font-semibold text-[#cccccc] mb-4">Fluxo Geral</h1>
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 relative">
+        <div class="space-y-6">
+          {/* Dashboard Section */}
+          <div class="bg-[#1e1e1e] border border-[#3e3e42] rounded p-6">
+            <h2 class="text-xl font-semibold text-[#cccccc] mb-6">Dashboard</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-6">
+              <div class="bg-[#252526] border border-[#3e3e42] rounded p-6 hover:border-[#4ec9b0]/50 transition-all">
+                <div class="text-sm font-medium text-[#cccccc] opacity-80 mb-1">Exames Coletados Hoje</div>
+                <div class="text-3xl font-bold text-[#4ec9b0]">{dashboardData.examesColetadosHoje}</div>
+                <div class="text-xs text-[#858585] mt-1">Últimas 24h</div>
+              </div>
+              <div class="bg-[#252526] border border-[#3e3e42] rounded p-6 hover:border-purple-500/50 transition-all">
+                <div class="text-sm font-medium text-[#cccccc] opacity-80 mb-1">Exames em Transporte</div>
+                <div class="text-3xl font-bold text-purple-400">{dashboardData.examesEmTransporte}</div>
+                <div class="text-xs text-[#858585] mt-1">Em trânsito</div>
+              </div>
+              <div class="bg-[#252526] border border-[#3e3e42] rounded p-6 hover:border-green-500/50 transition-all">
+                <div class="text-sm font-medium text-[#cccccc] opacity-80 mb-1">Exames Liberados</div>
+                <div class="text-3xl font-bold text-green-400">{dashboardData.examesLiberadosMes}</div>
+                <div class="text-xs text-[#858585] mt-1">Este mês</div>
+              </div>
+              <div class="bg-[#252526] border border-[#3e3e42] rounded p-6 hover:border-orange-500/50 transition-all">
+                <div class="text-sm font-medium text-[#cccccc] opacity-80 mb-1">Ocorrências Abertas</div>
+                <div class="text-3xl font-bold text-orange-400">{dashboardData.ocorrenciasAberto}</div>
+                <div class="text-xs text-[#858585] mt-1">Pendentes</div>
+              </div>
+              <div class="bg-[#252526] border border-[#3e3e42] rounded p-6 hover:border-red-500/50 transition-all">
+                <div class="text-sm font-medium text-[#cccccc] opacity-80 mb-1">Aguardando Retorno</div>
+                <div class="text-3xl font-bold text-red-400">{dashboardData.ocorrenciasAguardandoRetorno}</div>
+                <div class="text-xs text-[#858585] mt-1">Em análise</div>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div class="bg-[#252526] border border-[#3e3e42] rounded p-6">
+                <h3 class="text-lg font-semibold text-[#cccccc] mb-4">Status dos Exames</h3>
+                <PieChart title="" data={dashboardData.statusExames} />
+              </div>
+              <div class="bg-[#252526] border border-[#3e3e42] rounded p-6">
+                <h3 class="text-lg font-semibold text-[#cccccc] mb-4">Tipos de Exames</h3>
+                <PieChart title="" data={dashboardData.tiposExames} />
+              </div>
+            </div>
+          </div>
+
+          {/* Menu Section */}
+          <div class="bg-[#1e1e1e] border border-[#3e3e42] rounded p-6">
+            <h1 class="text-xl font-semibold text-[#cccccc] mb-4">Fluxo Geral</h1>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 relative">
             {menuItems.map((item, index) => {
               const Icon = item.icon;
               const isLast = index === menuItems.length - 1;
@@ -45,6 +90,7 @@ export default function Option9Home() {
                 </a>
               );
             })}
+            </div>
           </div>
         </div>
       </Option9Layout>

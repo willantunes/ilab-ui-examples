@@ -1,6 +1,7 @@
 import { Head } from "$fresh/runtime.ts";
 import Option2Layout from "../../components/layouts/Option2Layout.tsx";
 import { GridIcon, ListIcon, MonitorIcon, EnvelopeIcon, DollarIcon, TruckIcon, AlertTriangleIcon, GraduationCapIcon, ArrowRightIcon } from "../../components/shared/Icons.tsx";
+import { DashboardCard, PieChart, dashboardData } from "../../components/shared/Dashboard.tsx";
 
 export default function Option2Home() {
   const menuItems = [
@@ -20,11 +21,29 @@ export default function Option2Home() {
         <title>Gralab Diagnósticos - Opção 2</title>
       </Head>
       <Option2Layout currentPage="fluxo-geral">
-        <div class="bg-white rounded-xl shadow-xl border-2 border-blue-200 p-8">
-          <div class="bg-blue-600 text-white px-6 py-4 rounded-t-xl -m-8 mb-4">
-            <h1 class="text-2xl font-bold">Fluxo Geral</h1>
+        <div class="space-y-6">
+          {/* Dashboard Section */}
+          <div class="bg-white rounded-xl shadow-xl border-2 border-blue-200 p-6 sm:p-8">
+            <h2 class="text-xl font-bold text-blue-900 mb-6">Dashboard</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-6">
+              <DashboardCard title="Exames Coletados Hoje" value={dashboardData.examesColetadosHoje} subtitle="Últimas 24h" color="blue" trend={{ value: 12, isPositive: true }} />
+              <DashboardCard title="Exames em Transporte" value={dashboardData.examesEmTransporte} subtitle="Em trânsito" color="purple" />
+              <DashboardCard title="Exames Liberados" value={dashboardData.examesLiberadosMes} subtitle="Este mês" color="green" trend={{ value: 8, isPositive: true }} />
+              <DashboardCard title="Ocorrências Abertas" value={dashboardData.ocorrenciasAberto} subtitle="Pendentes" color="orange" />
+              <DashboardCard title="Aguardando Retorno" value={dashboardData.ocorrenciasAguardandoRetorno} subtitle="Em análise" color="red" />
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <PieChart title="Status dos Exames" data={dashboardData.statusExames} />
+              <PieChart title="Tipos de Exames" data={dashboardData.tiposExames} />
+            </div>
           </div>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 relative">
+
+          {/* Menu Section */}
+          <div class="bg-white rounded-xl shadow-xl border-2 border-blue-200 p-8">
+            <div class="bg-blue-600 text-white px-6 py-4 rounded-t-xl -m-8 mb-4">
+              <h1 class="text-2xl font-bold">Fluxo Geral</h1>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 relative">
             {menuItems.map((item, index) => {
               const Icon = item.icon;
               const isLast = index === menuItems.length - 1;
@@ -47,6 +66,7 @@ export default function Option2Home() {
                 </a>
               );
             })}
+            </div>
           </div>
         </div>
       </Option2Layout>
