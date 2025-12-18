@@ -1,0 +1,53 @@
+import { Head } from "$fresh/runtime.ts";
+import Option1Layout from "../../components/layouts/Option1Layout.tsx";
+import { GridIcon, ListIcon, MonitorIcon, EnvelopeIcon, DollarIcon, TruckIcon, AlertTriangleIcon, GraduationCapIcon, ArrowRightIcon } from "../../components/shared/Icons.tsx";
+
+export default function Option1Home() {
+  const menuItems = [
+    { id: "estoque", label: "Estoque de kits", icon: GridIcon },
+    { id: "cadastro", label: "Cadastro de Exames", icon: ListIcon },
+    { id: "comprovante", label: "Comprovante de Envio", icon: MonitorIcon },
+    { id: "laudos", label: "Laudos disponíveis", icon: EnvelopeIcon },
+    { id: "financeiro", label: "Financeiro", icon: DollarIcon },
+    { id: "empresa", label: "Nova Empresa", icon: TruckIcon },
+    { id: "ocorrencias", label: "Ocorrências", icon: AlertTriangleIcon },
+    { id: "treinamentos", label: "Meus Treinamentos", icon: GraduationCapIcon },
+  ];
+
+  return (
+    <>
+      <Head>
+        <title>Gralab Diagnósticos - Opção 1</title>
+      </Head>
+      <Option1Layout currentPage="fluxo-geral">
+        <div class="bg-white/60 backdrop-blur-xl rounded-2xl shadow-lg border border-blue-200/50 p-8">
+          <div class="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-6 py-4 rounded-t-2xl -m-8 mb-4">
+            <h1 class="text-2xl font-bold">Fluxo Geral</h1>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 mt-4 sm:mt-6 md:mt-8">
+            {menuItems.map((item) => {
+              const Icon = item.icon;
+              return (
+                <a
+                  href={`/option1/${item.id}`}
+                  class="bg-white/80 backdrop-blur-sm border border-blue-200/50 rounded-xl p-4 sm:p-6 hover:shadow-lg transition-all hover:scale-105 flex items-center gap-3 sm:gap-4 group"
+                >
+                  <div class="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 group-hover:bg-blue-200 transition-colors">
+                    <Icon />
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <div class="text-blue-900 font-semibold text-sm sm:text-base">{item.label}</div>
+                  </div>
+                  <div class="flex-shrink-0 text-blue-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all">
+                    <ArrowRightIcon />
+                  </div>
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      </Option1Layout>
+    </>
+  );
+}
+

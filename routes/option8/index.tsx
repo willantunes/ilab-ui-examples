@@ -1,0 +1,56 @@
+import { Head } from "$fresh/runtime.ts";
+import Option8Layout from "../../components/layouts/Option8Layout.tsx";
+import { GridIcon, ListIcon, MonitorIcon, EnvelopeIcon, DollarIcon, TruckIcon, AlertTriangleIcon, GraduationCapIcon } from "../../components/shared/Icons.tsx";
+
+export default function Option8Home() {
+  const menuItems = [
+    { id: "estoque", label: "Estoque de kits", icon: GridIcon, progress: 85 },
+    { id: "cadastro", label: "Cadastro de Exames", icon: ListIcon, progress: 70 },
+    { id: "comprovante", label: "Comprovante de Envio", icon: MonitorIcon, progress: 90 },
+    { id: "laudos", label: "Laudos disponíveis", icon: EnvelopeIcon, progress: 65 },
+    { id: "financeiro", label: "Financeiro", icon: DollarIcon, progress: 80 },
+    { id: "empresa", label: "Nova Empresa", icon: TruckIcon, progress: 75 },
+    { id: "ocorrencias", label: "Ocorrências", icon: AlertTriangleIcon, progress: 60 },
+    { id: "treinamentos", label: "Meus Treinamentos", icon: GraduationCapIcon, progress: 95 },
+  ];
+
+  return (
+    <>
+      <Head>
+        <title>Gralab Diagnósticos - Opção 8</title>
+      </Head>
+      <Option8Layout currentPage="fluxo-geral">
+        <div class="bg-white rounded-2xl shadow-md border border-slate-200 p-10">
+          <div class="bg-blue-600 text-white px-8 py-5 rounded-t-2xl -m-10 mb-6">
+            <h1 class="text-2xl font-bold">Fluxo Geral</h1>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-6">
+            {menuItems.map((item) => {
+              const Icon = item.icon;
+              return (
+                <a
+                  href={`/option8/${item.id}`}
+                  class="bg-slate-50 border border-slate-200 rounded-xl p-6 hover:bg-white hover:border-blue-300 hover:shadow-md transition-all group"
+                >
+                  <div class="flex items-center gap-4 mb-3">
+                    <div class="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 group-hover:bg-blue-200 transition-colors">
+                      <Icon />
+                    </div>
+                    <div class="text-slate-900 font-semibold flex-1">{item.label}</div>
+                  </div>
+                  <div class="w-full bg-slate-200 rounded-full h-1.5">
+                    <div 
+                      class="bg-blue-600 h-1.5 rounded-full transition-all group-hover:bg-blue-700" 
+                      style={`width: ${item.progress}%`}
+                    ></div>
+                  </div>
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      </Option8Layout>
+    </>
+  );
+}
+

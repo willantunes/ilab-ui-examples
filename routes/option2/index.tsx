@@ -1,0 +1,48 @@
+import { Head } from "$fresh/runtime.ts";
+import Option2Layout from "../../components/layouts/Option2Layout.tsx";
+import { GridIcon, ListIcon, MonitorIcon, EnvelopeIcon, DollarIcon, TruckIcon, AlertTriangleIcon, GraduationCapIcon } from "../../components/shared/Icons.tsx";
+
+export default function Option2Home() {
+  const menuItems = [
+    { id: "estoque", label: "Estoque de kits", icon: GridIcon, gradient: "from-blue-500 to-blue-600" },
+    { id: "cadastro", label: "Cadastro de Exames", icon: ListIcon, gradient: "from-green-500 to-green-600" },
+    { id: "comprovante", label: "Comprovante de Envio", icon: MonitorIcon, gradient: "from-purple-500 to-purple-600" },
+    { id: "laudos", label: "Laudos disponíveis", icon: EnvelopeIcon, gradient: "from-yellow-500 to-yellow-600" },
+    { id: "financeiro", label: "Financeiro", icon: DollarIcon, gradient: "from-red-500 to-red-600" },
+    { id: "empresa", label: "Nova Empresa", icon: TruckIcon, gradient: "from-indigo-500 to-indigo-600" },
+    { id: "ocorrencias", label: "Ocorrências", icon: AlertTriangleIcon, gradient: "from-orange-500 to-orange-600" },
+    { id: "treinamentos", label: "Meus Treinamentos", icon: GraduationCapIcon, gradient: "from-pink-500 to-pink-600" },
+  ];
+
+  return (
+    <>
+      <Head>
+        <title>Gralab Diagnósticos - Opção 2</title>
+      </Head>
+      <Option2Layout currentPage="fluxo-geral">
+        <div class="bg-white rounded-xl shadow-xl border-2 border-blue-200 p-8">
+          <div class="bg-blue-600 text-white px-6 py-4 rounded-t-xl -m-8 mb-4">
+            <h1 class="text-2xl font-bold">Fluxo Geral</h1>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+            {menuItems.map((item) => {
+              const Icon = item.icon;
+              return (
+                <a
+                  href={`/option2/${item.id}`}
+                  class="bg-white border-2 border-blue-200 rounded-xl p-6 hover:shadow-xl transition-all hover:scale-105 hover:border-blue-500 flex items-center gap-4 shadow-md group"
+                >
+                  <div class={`flex-shrink-0 w-14 h-14 bg-gradient-to-br ${item.gradient} rounded-full flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform`}>
+                    <Icon />
+                  </div>
+                  <div class="text-blue-900 font-semibold flex-1">{item.label}</div>
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      </Option2Layout>
+    </>
+  );
+}
+
